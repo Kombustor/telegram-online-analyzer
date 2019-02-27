@@ -1,0 +1,4 @@
+config.ini
+*.session
+venv
+.idea

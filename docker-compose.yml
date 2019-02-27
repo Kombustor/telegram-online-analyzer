@@ -1,0 +1,35 @@
+version: '3'
+
+services:
+  app:
+    build: .
+    container_name: "tgonline-app"
+    networks:
+      - tgonline
+    links:
+      - db
+    volumes:
+      - ./collect/config.ini:/collect/config.ini
+      - ./collect/data-collector.session:/collect/data-collector.session
+    restart: unless-stopped
+
+  db:
+    image: mariadb
+    container_name: "tgonline-db"
+    restart: unless-stopped
+    networks:
+      - tgonline
+    volumes:
+      - tgonline-db:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=tgonline
+      - MYSQL_PASSWORD=tgonline
+      - MYSQL_DATABASE=tgonline
+      - MYSQL_USER=tgonline
+
+volumes:
+  tgonline-db:
+
+networks:
+  tgonline:
+    external: false
