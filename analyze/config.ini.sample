@@ -1,0 +1,6 @@
+[mysql]
+host = localhost
+database = python_mysql
+user = root
+password = password
+charset = utf8mb4

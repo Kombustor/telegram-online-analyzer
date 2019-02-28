@@ -55,5 +55,5 @@ class Database:
             self.connect()
             cursor = self.connection.cursor()
             cursor.execute(sql, data)
-        self.connection.commit()
+        # self.connection.commit()
         return cursor
